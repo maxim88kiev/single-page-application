@@ -14,7 +14,7 @@
           <v-card-actions>
             <v-spacer></v-spacer>
             <addEditAdModal :ad="ad" v-if="isOwner"></addEditAdModal>
-            <v-btn class="success">Buy</v-btn>
+            <app-buy-modal :ad="ad"></app-buy-modal>
           </v-card-actions>
         </v-card>
         <div v-else class="text-xs-center">
@@ -37,13 +37,15 @@ export default {
   props: ['id'],
   computed: {
     ad () {
-      const id = this.id
-      return this.$store.getters.adById(id)
+      return this.$store.getters.adById(this.id)
     },
     loading () {
       return this.$store.getters.loading
     },
     isOwner () {
+      if (!this.$store.getters.user) {
+        return false
+      }
       return this.ad.ownerId === this.$store.getters.user.id
     }
   },

@@ -41,7 +41,7 @@
             <v-card-actions>
               <v-spacer></v-spacer>
               <v-btn flat :to="'/ad/' + ad.id">Open</v-btn>
-              <v-btn raised class="primary">Buy</v-btn>
+              <app-buy-modal :ad="ad"></app-buy-modal>
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -80,8 +80,8 @@ export default {
 }
 </script>
 
-<style scoped>
-  .car-link {
+<style scoped lang="stylus">
+  .car-link
     position: absolute;
     bottom: 50px;
     left: 50%;
@@ -90,5 +90,4 @@ export default {
     padding: 5px 15px;
     border-top-right-radius: 5px;
     border-top-left-radius: 5px;
-  }
 </style>
